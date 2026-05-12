@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG Library Console</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="RAG Library home">
+      <span class="brand-mark">R</span>
+      <span>
+        <strong>RAG Library</strong>
+        <small>Intelligence Console</small>
+      </span>
+    </a>
+    <nav class="nav-actions" aria-label="Primary navigation">
+      <a class="nav-link is-active" href="/">Console</a>
+      <a class="nav-link" href="/admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Library Management System</p>
+        <h1>Premium catalog search with an AI help desk.</h1>
+        <p class="hero-text">Search books, borrow available titles, and ask the RAG assistant about policies, APIs, roles, and system design.</p>
+      </div>
+      <div class="library-visual" aria-hidden="true">
+        <div class="visual-card visual-card-main">
+          <span></span>
+          <strong>Knowledge Base</strong>
+          <small>RAG ready</small>
+        </div>
+        <div class="book-stack">
+          <span class="book-spine spine-gold"></span>
+          <span class="book-spine spine-green"></span>
+          <span class="book-spine spine-ink"></span>
+          <span class="book-spine spine-ivory"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid public-stats" aria-label="Library overview">
+      <article class="stat-card blue">
+        <div class="stat-top">
+          <span class="stat-label">Total Books</span>
+          <span class="stat-icon">BK</span>
+        </div>
+        <strong id="totalBooksStat" class="stat-value">0</strong>
+        <span class="stat-delta">Live catalog</span>
+      </article>
+      <article class="stat-card teal">
+        <div class="stat-top">
+          <span class="stat-label">Available Copies</span>
+          <span class="stat-icon">CP</span>
+        </div>
+        <strong id="availableCopiesStat" class="stat-value">0</strong>
+        <span class="stat-delta">Ready to borrow</span>
+      </article>
+      <article class="stat-card amber">
+        <div class="stat-top">
+          <span class="stat-label">Unavailable</span>
+          <span class="stat-icon">AL</span>
+        </div>
+        <strong id="unavailableBooksStat" class="stat-value">0</strong>
+        <span class="stat-delta">Needs attention</span>
+      </article>
+      <article class="stat-card green">
+        <div class="stat-top">
+          <span class="stat-label">Categories</span>
+          <span class="stat-icon">CT</span>
+        </div>
+        <strong id="categoryStat" class="stat-value">0</strong>
+        <span class="stat-delta">Knowledge areas</span>
+      </article>
+    </section>
+
+    <section class="workspace-grid">
+      <section class="surface catalog-panel" aria-labelledby="catalogTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Live catalog</p>
+            <h2 id="catalogTitle">Book collection</h2>
+          </div>
+          <span id="catalogCount" class="metric-pill">0 books</span>
+        </div>
+
+        <form id="searchForm" class="control-row">
+          <input id="bookSearch" type="search" placeholder="Search title, author, category, ISBN" autocomplete="off" />
+          <button type="submit">Search</button>
+        </form>
+
+        <div id="categoryFilters" class="filter-chips" aria-label="Catalog categories"></div>
+
+        <div class="borrow-strip">
+          <label for="studentId">Student ID</label>
+          <input id="studentId" value="student-001" autocomplete="off" />
+        </div>
+
+        <p id="catalogStatus" class="status-line" role="status"></p>
+        <div id="books" class="books"></div>
+      </section>
+
+      <section class="surface chat-panel" aria-labelledby="chatTitle">
+        <div class="assistant-header">
+          <div class="bot-avatar" aria-hidden="true">AI</div>
+          <div class="chat-header-info">
+            <p class="eyebrow">RAG assistant</p>
+            <h2 id="chatTitle">Help chatbot</h2>
+            <span>Online - local knowledge fallback ready</span>
+          </div>
+          <button id="clearChatButton" class="secondary-button clear-chat-button" type="button">Clear</button>
+        </div>
+
+        <div class="assistant-context">
+          <div>
+            <strong>Ask system questions</strong>
+            <span>Policies, endpoints, borrowing rules, roles, architecture</span>
+          </div>
+          <span class="metric-pill">FastAPI + RAG</span>
+        </div>
+
+        <div class="prompt-chips" aria-label="Quick questions">
+          <button type="button" data-question="How can a student borrow a book?">Borrow rules</button>
+          <button type="button" data-question="What API endpoint searches books?">Search API</button>
+          <button type="button" data-question="What can admins manage?">Admin role</button>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <div id="typing" class="typing hidden">Assistant is thinking...</div>
+
+        <form id="chatForm" class="chat-row">
+          <input id="question" placeholder="Ask about borrow, return, API, roles..." autocomplete="off" />
+          <button id="sendButton" type="submit">Send</button>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

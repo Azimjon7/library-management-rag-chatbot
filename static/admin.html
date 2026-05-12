@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | RAG Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="RAG Library home">
+      <span class="brand-mark">R</span>
+      <span>
+        <strong>RAG Library</strong>
+        <small>Admin Suite</small>
+      </span>
+    </a>
+    <nav class="nav-actions" aria-label="Primary navigation">
+      <a class="nav-link" href="/">Console</a>
+      <a class="nav-link is-active" href="/admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="admin-shell">
+    <section id="loginView" class="auth-layout">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Secure access</p>
+          <h1>Private library operations command room.</h1>
+          <p class="hero-text">Sign in to monitor catalog health, borrowing activity, AI stack settings, and circulation operations.</p>
+        </div>
+        <div class="library-visual" aria-hidden="true">
+          <div class="visual-card visual-card-main">
+            <span></span>
+            <strong>Admin Suite</strong>
+            <small>Protected</small>
+          </div>
+          <div class="book-stack">
+            <span class="book-spine spine-gold"></span>
+            <span class="book-spine spine-green"></span>
+            <span class="book-spine spine-ink"></span>
+          </div>
+        </div>
+      </div>
+
+      <section class="auth-panel" aria-labelledby="loginTitle">
+        <p class="eyebrow">Administrator</p>
+        <h2 id="loginTitle">Sign in</h2>
+        <form id="loginForm" class="login-form">
+          <label>
+            Username
+            <input id="adminUsername" name="username" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input id="adminPassword" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="primary-button" type="submit">Enter panel</button>
+          <p id="loginError" class="login-error" role="alert"></p>
+        </form>
+      </section>
+    </section>
+
+    <section id="dashboardView" class="hidden">
+      <div class="admin-header">
+        <div>
+          <p class="eyebrow">Admin panel</p>
+          <h1>Library control center</h1>
+          <p id="adminMeta">Signed in</p>
+        </div>
+        <button id="logoutButton" class="ghost-button" type="button">Logout</button>
+      </div>
+
+      <div id="stats" class="stat-grid" aria-label="Library statistics"></div>
+
+      <div id="adminInsightCards" class="insight-grid" aria-label="Operational insights"></div>
+
+      <div class="admin-grid">
+        <section class="surface">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Inventory</p>
+              <h2>Catalog status</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Category</th>
+                  <th>Copies</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody id="adminBooks"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="surface">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Circulation</p>
+              <h2>Operations</h2>
+            </div>
+          </div>
+          <form id="operationForm" class="operation-form">
+            <label>
+              Student ID
+              <input id="operationUserId" value="student-001" required />
+            </label>
+            <label>
+              Book ID
+              <input id="operationBookId" placeholder="book-1" required />
+            </label>
+            <div class="control-row">
+              <button type="submit" data-action="borrow">Borrow</button>
+              <button class="secondary-button" type="submit" data-action="return">Return</button>
+            </div>
+            <p id="operationStatus" class="status-line" role="status"></p>
+          </form>
+        </aside>
+      </div>
+
+      <div class="admin-grid">
+        <section class="surface">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Collection analytics</p>
+              <h2>Category breakdown</h2>
+            </div>
+          </div>
+          <div id="categoryBreakdown" class="category-breakdown"></div>
+        </section>
+
+        <aside class="surface">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Inventory health</p>
+              <h2>Low stock</h2>
+            </div>
+          </div>
+          <div id="lowStockList" class="stock-list"></div>
+        </aside>
+      </div>
+
+      <div class="admin-grid">
+        <section class="surface">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Activity</p>
+              <h2>Recent borrowing</h2>
+            </div>
+          </div>
+          <div id="activityList" class="activity-list"></div>
+        </section>
+
+        <aside class="surface">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">System</p>
+              <h2>AI stack</h2>
+            </div>
+          </div>
+          <dl id="systemList" class="system-list"></dl>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
