@@ -18,7 +18,7 @@ class ModelFactory:
     @staticmethod
     def create_embeddings():
         return OllamaEmbeddings(
-            model=EMBED_MODEL,
-            base_url=OLLAMA_BASE_URL,
-            client_kwargs={"timeout": OLLAMA_TIMEOUT},
-        )
+    model="all-minilm",
+    base_url="http://127.0.0.1:11434",
+    client_kwargs={"timeout": 60},
+)

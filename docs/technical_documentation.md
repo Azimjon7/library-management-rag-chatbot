@@ -86,19 +86,26 @@ This reduces latency and follows production RAG practice.
    ```
 
 ## 9. Demo Scenarios
-System questions:
-- What is the Library Management System?
-- How can a student borrow a book?
-- How can a librarian add a book?
-- What API endpoints are available?
-- What user roles exist?
+## Borrowing Books
 
-Rejection examples:
-- Who is Messi?
-- Tell me about World War II.
-- Write code for a restaurant app.
-- What is the capital of France?
-- Give me personal advice.
+Students can borrow a book by searching for the book in the Library Management System, selecting an available copy, and submitting a borrow request.
+
+Users may ask:
+- How can a student borrow a book?
+- How to borrow a book?
+- How does borrowing work?
+- Can students borrow books?
+- How a student borrow a book?
+
+## System Overview and General Questions
+
+The Library Management System is a web-based application that helps users search books, borrow books, return books, and ask questions through an AI chatbot.
+
+Users may ask:
+- How does this system work?
+- What does this project do?
+- Tell me about this system
+- Explain the project
 
 ## 10. Deployment Plan
 For local demo, run the app with Uvicorn. For cloud deployment, use Render or Railway. Add environment variables in the provider dashboard. Do not hardcode secrets. Keep `chroma_db/` persistent or run `python ingest.py` during setup.
