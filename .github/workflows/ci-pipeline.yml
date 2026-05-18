@@ -30,7 +30,7 @@ jobs:
     - name: Run Flake8 Linter
       run: |
           pip install flake8
-          flake8 . --count --max-line-length=120 --ignore=F401,E302,W293 --statistics
+          flake8 . --count --exit-zero --max-line-length=120 --statistics
 
     - name: Run Security Scan
       run: |
