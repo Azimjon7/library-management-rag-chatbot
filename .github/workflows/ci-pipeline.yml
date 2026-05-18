@@ -1,26 +1,41 @@
-name: CI Pipeline
+name: Library Management RAG CI
 
 on:
   push:
-  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  test:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Import smoke test
-        run: python -m py_compile api.py chat.py ingest.py src/*.py
+    - name: Run Python Syntax Check
+      run: |
+        python -m py_compile app.py
+        python -m py_compile ingest.py
+
+    - name: Run Flake8 Linter
+      run: |
+        pip install flake8
+        flake8 . --count --statistics
+
+    - name: Run Security Scan
+      run: |
+        pip install bandit
+        bandit -r .
+
+    - name: CI Finished
+      run: echo "Library Management RAG Chatbot CI completed successfully!"
